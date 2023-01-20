@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const https = require('https');
-const urlpkg = require('url')
+const urlpkg = require('url');
 
 async function post(requestUrl, bodyObj) {
   let url = urlpkg.parse(requestUrl)
@@ -43,7 +43,7 @@ async function post(requestUrl, bodyObj) {
     req.write(postData);
     req.end();
   })
-}
+};
 
 async function createBranch(orgName, databaseName, parentBranchName, branchName) {
   let url = `https://api.planetscale.com/v1/organizations/${orgName}/databases/${databaseName}/branches`
@@ -54,16 +54,18 @@ async function createBranch(orgName, databaseName, parentBranchName, branchName)
   let res = await post(url, body)
   let json = await res.json(res)
   console.log(json)
-}
+};
 
-try {
-  // `who-to-greet` input defined in action metadata file
-  const orgName = core.getInput('org_name');
-  const databaseName = core.getInput('database_name');
-  const parentBranchName = core.getInput('parent_branch_name');
-  const branchName = core.getInput('branch_name');
-  let res = await createBranch(orgName, databaseName, parentBranchName, branchName)
-  console.log(`Hello ${nameToGreet}!`);
-} catch (error) {
-  core.setFailed(error.message);
-}
+(async() => {
+  try {
+    // `who-to-greet` input defined in action metadata file
+    const orgName = core.getInput('org_name');
+    const databaseName = core.getInput('database_name');
+    const parentBranchName = core.getInput('parent_branch_name');
+    const branchName = core.getInput('branch_name');
+    let res = await createBranch(orgName, databaseName, parentBranchName, branchName)
+    console.log(`Hello ${nameToGreet}!`);
+  } catch (error) {
+    core.setFailed(error.message);
+  }
+})()
