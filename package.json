@@ -1,0 +1,23 @@
+{
+  "name": "create-branch-js-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmorrisondev/create-branch-js-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bmorrisondev/create-branch-js-action/issues"
+  },
+  "homepage": "https://github.com/bmorrisondev/create-branch-js-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.0"
+  }
+}
